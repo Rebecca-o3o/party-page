@@ -6,14 +6,14 @@ const express = require('express'),
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
 
 //SERVE API
-app.get('/api', function (req, res){
+app.get('/api', (req, res) => {
   res.json({
     message: 'Welcome to the API'
   })
 })
 
 //All remaining requests return the React app, so it can handle routing.
-app.get('*', (request, response) => {
+app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'))
 })
 

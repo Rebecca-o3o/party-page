@@ -1,3 +1,4 @@
 node_modules
 react-ui/build
 insert-users.sql
+secrets.json

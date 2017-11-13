@@ -12,16 +12,13 @@
         },
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
         "indent": [
             "error", 2, { "SwitchCase": 2}
         ],
         "semi": [
             "error",
-            "always"
+            "never"
         ],
         "no-console": 0,
         "no-inner-declarations": 0,

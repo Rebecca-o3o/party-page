@@ -1,28 +1,18 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import logo from './logo.svg';
-import './App.css';
+import Invitation from './components/Invitation'
+
 
 class App extends Component {
-
-  componentDidMount(){
-    axios.get('/api')
-      .then((serverResponse)=>{
-        console.log('Here is the serverResponse');
-        console.log(serverResponse)
-      })
-  }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <h1>Welcome to the birthday party of Rebecca and Loris!</h1>
+        <h3>8th December 2017</h3>
+
+        <Invitation />
+
       </div>
     );
   }

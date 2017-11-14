@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import Modal from './Modal'
 import SignedUserList from './SignedUserList'
 import OpenUserList from './OpenUserList'
@@ -18,16 +19,16 @@ export default class Invitation extends Component {
   }
 
   componentDidMount(){
-    //ATTENTION! AJAX CALL HERE!
-    // axios.get('/api/users')
-    //   .then(users => { //setState })
-    const users = require('./mock-users.json')
-    this.setState({
-      users
-    })
-    //bind methods
-    this.openModal = this.openModal.bind(this)
-    this.closeModalAndUpdateUser = this.closeModalAndUpdateUser.bind(this)
+    // const users = require('./mock-users.json')
+    // this.setState({
+    //   users: users
+    // })
+    axios.get('/api/users')
+      .then(serverResponse => {
+        this.setState({
+          users: serverResponse.data.users
+        })
+      })
   }
 
   openModal(userId){
@@ -38,19 +39,7 @@ export default class Invitation extends Component {
   }
 
   closeModalAndUpdateUser(updatedUser){
-    // const {
-    //   userId,
-    //   password,
-    //   dinner,
-    //   party,
-    //   notGoing
-    // } = updatedUser
-
-    // axios.post('/api/confirm',{updatedUser})
-    //   .then(serverResponse => {
-    //     if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
-    //
-    //   })
+    // const {userId, confirmationCode, dinner, party, notGoing} = updatedUser
 
     //remove Modal, update 'this.state.users' list with new user
     this.setState({
@@ -62,19 +51,42 @@ export default class Invitation extends Component {
             ...u,
             dinner: updatedUser.dinner,
             party: updatedUser.party,
-            notGoing: updatedUser.notGoing
+            declined: updatedUser.declined
           }
         }
         return u
       })
     })
+
+
+    // axios.post('/api/confirmation',{updatedUser})
+    //   .then(serverResponse => {
+    //     if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
+    //
+    //     //remove Modal, update 'this.state.users' list with new user
+    //     this.setState({
+    //       modalIsShown: false,
+    //       modalUserId: '',
+    //       users: this.state.users.map(u => {
+    //         if(u.userId === updatedUser.userId){
+    //           return {
+    //             ...u,
+    //             dinner: updatedUser.dinner,
+    //             party: updatedUser.party,
+    //             declined: updatedUser.declined
+    //           }
+    //         }
+    //         return u
+    //       })
+    //     })
+    //   })
   }
 
   render(){
     const {users, modalIsShown, modalUserId} = this.state
-    const dinnerUsers = users.filter(user=>user.dinner)
-    const partyUsers = users.filter(user=>user.party)
-    const openUsers = users.filter(user=>(!(user.dinner || user.party) && !user.declined))
+    const dinnerUsers = users.length && users.filter(user=>user.dinner)
+    const partyUsers = users.length && users.filter(user=>user.party)
+    const openUsers = users.length && users.filter(user=>(!(user.dinner || user.party) && !user.declined))
     return (
       <div>
 
@@ -85,18 +97,27 @@ export default class Invitation extends Component {
 
         <h4>Dinner</h4>
         <p>The dinner bla bla bla</p>
-        <SignedUserList users={dinnerUsers}/>
+        {
+          dinnerUsers &&
+          <SignedUserList users={dinnerUsers}/>
+        }
 
         <h4>Party</h4>
         <p>Party will be...</p>
-        <SignedUserList users={partyUsers}/>
+        {
+          partyUsers &&
+          <SignedUserList users={partyUsers}/>
+        }
 
         <h4>Opened requests</h4>
         <p>Please confirm</p>
-        <OpenUserList
-          users={openUsers}
-          openModal={this.openModal}
-        />
+        {
+          openUsers &&
+          <OpenUserList
+            users={openUsers}
+            openModal={this.openModal}
+          />
+        }
       </div>
     )
   }

@@ -2,7 +2,7 @@
   {
     "userId": 584264,
     "name": "Mark",
-    "imageUrl": "http://via.placeholder.com/100x100",
+    "image": "http://via.placeholder.com/100x100",
     "dinner": true,
     "party": true,
     "declined": ""
@@ -10,7 +10,7 @@
   {
     "userId": 5844,
     "name": "Tom",
-    "imageUrl": "http://via.placeholder.com/100x100",
+    "image": "http://via.placeholder.com/100x100",
     "dinner": "",
     "party": "",
     "declined": ""
@@ -18,7 +18,7 @@
   {
     "userId": 21478,
     "name": "Steve",
-    "imageUrl": "http://via.placeholder.com/100x100",
+    "image": "http://via.placeholder.com/100x100",
     "dinner": true,
     "party": true,
     "declined": ""
@@ -26,7 +26,7 @@
   {
     "userId": 6985,
     "name": "Matt",
-    "imageUrl": "http://via.placeholder.com/100x100",
+    "image": "http://via.placeholder.com/100x100",
     "dinner": "",
     "party": "",
     "declined": ""
@@ -34,7 +34,7 @@
   {
     "userId": 474,
     "name": "Thomas",
-    "imageUrl": "http://via.placeholder.com/100x100",
+    "image": "http://via.placeholder.com/100x100",
     "dinner": "",
     "party": "",
     "declined": "true"

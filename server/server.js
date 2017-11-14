@@ -20,7 +20,7 @@ app.get('/api/users', (req, res) => {
   db.getAllUsers().then(function(result){
 
     res.json({
-      users: result.rows
+      users: result
     })
   })
     .catch(function(err){

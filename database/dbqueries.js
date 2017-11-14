@@ -3,12 +3,18 @@ const db = spicedPg(process.env.DATABASE_URL || require('../secrets').db)
 
 
 module.exports.getAllUsers = function(){
-  const queryText = 'SELECT id AS userId, name, image, dinner, party, declined FROM users order by name'
-  return db.query(queryText).then((result)=>{
-    return result
-  }).catch((err)=>{
-    console.log(err)
-  })
+  const queryText = 'SELECT id, name, image, dinner, party, declined FROM users order by name'
+  return db.query(queryText)
+    .then((result)=>{
+      return result.rows.map(user=>{
+        const {id: userId, name, image, dinner, party, declined} = user
+        return {
+          userId, name, image, dinner, party, declined
+        }
+      })
+    }).catch((err)=>{
+      console.log(err)
+    })
 }
 
 

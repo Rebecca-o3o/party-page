@@ -10,7 +10,7 @@ export default class SignedUserList extends Component {
           <div key={user.userId}>
 
             <h3>{user.name}</h3>
-            <img src={user.imageUrl} alt={user.name}/>
+            <img src={user.image} alt={user.name}/>
 
             <button onClick={e => openModal(user.userId)}>
               Confirm

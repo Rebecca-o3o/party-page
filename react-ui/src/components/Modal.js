@@ -6,10 +6,10 @@ export default class Modal extends Component {
     super(props)
     this.state = {
       userId: this.props.userId,
-      password: '',
+      confirmationCode: '',
       dinner: false,
       party: false,
-      notGoing: false
+      declined: false
     }
     //bind methods
     this.handleInputField = this.handleInputField.bind(this)
@@ -30,16 +30,16 @@ export default class Modal extends Component {
   }
 
   handleSendButton(){
-    const {password,dinner,party,notGoing} = this.state
+    const {confirmationCode,dinner,party,declined} = this.state
     const {closeModalAndUpdateUser} = this.props
     //check if fields are filled correctly
-    if(!password) {
-      return this.setState({errorMessage: 'Password is required!'})
+    if(!confirmationCode) {
+      return this.setState({errorMessage: 'Confirmation Code is required!'})
     }
-    if(!(dinner || party || notGoing)) {
+    if(!(dinner || party || declined)) {
       return this.setState({errorMessage: 'Please select a field!'})
     }
-    if((dinner || party) && notGoing) {
+    if((dinner || party) && declined) {
       return this.setState({errorMessage: 'Your choice is not correct'})
     }
 
@@ -57,7 +57,7 @@ export default class Modal extends Component {
 
         <div>
           <h6>Your confirmation code</h6>
-          <input type="password" value={this.state.password} onChange={e => this.handleInputField('password', e.target.value)}/>
+          <input type="text" value={this.state.confirmationCode} onChange={e => this.handleInputField('confirmationCode', e.target.value)}/>
         </div>
 
         <div onClick={e => this.handleCheckField('dinner', true)}>
@@ -70,7 +70,7 @@ export default class Modal extends Component {
           <div className="checkbox"/>
         </div>
 
-        <div onClick={e => this.handleCheckField('notGoing', true)}>
+        <div onClick={e => this.handleCheckField('declined', true)}>
           <h5>Not Going</h5>
           <div className="checkbox"/>
         </div>

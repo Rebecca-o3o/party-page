@@ -51,7 +51,7 @@ export default class Modal extends Component {
     const {errorMessage} = this.state
 
     return (
-      <div className="Modal">
+      <div className="modal">
 
         {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
 

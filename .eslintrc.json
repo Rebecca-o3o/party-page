@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error", 2, { "SwitchCase": 2}
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "no-console": 0,
+        "no-inner-declarations": 0,
+        "no-sparse-arrays": 0,
+        "no-unexpected-multiline": 0,
+        "no-unsafe-finally": 0
+    }
+}

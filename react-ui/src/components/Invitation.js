@@ -12,6 +12,9 @@ export default class Invitation extends Component {
       modalIsShown: false,
       modalUserId: ''
     }
+    //bind methods
+    this.openModal = this.openModal.bind(this)
+    this.closeModalAndUpdateUser = this.closeModalAndUpdateUser.bind(this)
   }
 
   componentDidMount(){
@@ -24,13 +27,47 @@ export default class Invitation extends Component {
     })
     //bind methods
     this.openModal = this.openModal.bind(this)
+    this.closeModalAndUpdateUser = this.closeModalAndUpdateUser.bind(this)
   }
 
   openModal(userId){
-    console.log(`Modal is opened from user ${userId}`);
     this.setState({
       modalIsShown: true,
       modalUserId: userId
+    })
+  }
+
+  closeModalAndUpdateUser(updatedUser){
+    // const {
+    //   userId,
+    //   password,
+    //   dinner,
+    //   party,
+    //   notGoing
+    // } = userData
+
+    //update user server side and change local state
+    // axios.post('/api/confirm',{updatedUser})
+    //   .then(serverResponse => {
+    //     if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
+    //
+    //   })
+
+    //remove Modal, update 'this.state.users' list
+    this.setState({
+      modalIsShown: false,
+      modalUserId: '',
+      users: this.state.users.map(u => {
+        if(u.id === updatedUser.id){
+          return {
+            ...u,
+            dinner: updatedUser.dinner,
+            party: updatedUser.party,
+            notGoing: updatedUser.notGoing
+          }
+        }
+        return u
+      })
     })
   }
 
@@ -42,7 +79,10 @@ export default class Invitation extends Component {
     return (
       <div>
 
-        {modalIsShown && <Modal userId={modalUserId}/>}
+        {
+          modalIsShown &&
+          <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
+        }
 
         <h4>Dinner</h4>
         <p>The dinner bla bla bla</p>

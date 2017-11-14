@@ -4,7 +4,7 @@
     "name": "Mark",
     "imageUrl": "http://via.placeholder.com/100x100",
     "dinner": true,
-    "party": "",
+    "party": true,
     "declined": ""
   },
   {

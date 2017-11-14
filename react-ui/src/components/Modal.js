@@ -5,7 +5,7 @@ export default class Modal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      userId: this.props.userId,
+      id: this.props.userId,
       password: '',
       dinner: false,
       party: false,
@@ -31,6 +31,7 @@ export default class Modal extends Component {
 
   handleSendButton(){
     const {password,dinner,party,notGoing} = this.state
+    const {closeModalAndUpdateUser} = this.props
     //check if fields are filled correctly
     if(!password) {
       return this.setState({errorMessage: 'Password is required!'})
@@ -42,8 +43,8 @@ export default class Modal extends Component {
       return this.setState({errorMessage: 'Your choice is not correct'})
     }
 
-    //now all fields are filled correctly
-    console.log(this.state);
+    //now all fields are filled correctly --> pass updated user back to 'Invitation'
+    closeModalAndUpdateUser(this.state)
   }
 
   render(){

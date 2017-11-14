@@ -44,21 +44,20 @@ export default class Invitation extends Component {
     //   dinner,
     //   party,
     //   notGoing
-    // } = userData
+    // } = updatedUser
 
-    //update user server side and change local state
     // axios.post('/api/confirm',{updatedUser})
     //   .then(serverResponse => {
     //     if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
     //
     //   })
 
-    //remove Modal, update 'this.state.users' list
+    //remove Modal, update 'this.state.users' list with new user
     this.setState({
       modalIsShown: false,
       modalUserId: '',
       users: this.state.users.map(u => {
-        if(u.id === updatedUser.id){
+        if(u.userId === updatedUser.userId){
           return {
             ...u,
             dinner: updatedUser.dinner,

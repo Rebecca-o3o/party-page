@@ -5,7 +5,7 @@ export default class Modal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      id: this.props.userId,
+      userId: this.props.userId,
       password: '',
       dinner: false,
       party: false,
@@ -43,7 +43,7 @@ export default class Modal extends Component {
       return this.setState({errorMessage: 'Your choice is not correct'})
     }
 
-    //now all fields are filled correctly --> pass updated user back to 'Invitation'
+    //now all fields are filled correctly --> pass updated user back to 'Invitation' and close the 'Modal'
     closeModalAndUpdateUser(this.state)
   }
 

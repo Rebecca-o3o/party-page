@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Modal from './Modal'
 import SignedUserList from './SignedUserList'
 import OpenUserList from './OpenUserList'
 
@@ -34,12 +35,15 @@ export default class Invitation extends Component {
   }
 
   render(){
-    const {users} = this.state
+    const {users, modalIsShown, modalUserId} = this.state
     const dinnerUsers = users.filter(user=>user.dinner)
     const partyUsers = users.filter(user=>user.party)
     const openUsers = users.filter(user=>(!(user.dinner || user.party) && !user.declined))
     return (
       <div>
+
+        {modalIsShown && <Modal userId={modalUserId}/>}
+
         <h4>Dinner</h4>
         <p>The dinner bla bla bla</p>
         <SignedUserList users={dinnerUsers}/>

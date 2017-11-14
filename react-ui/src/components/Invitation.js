@@ -15,9 +15,21 @@ export default class Invitation extends Component {
 
   componentDidMount(){
     //ATTENTION! AJAX CALL HERE!
+    // axios.get('/api/users')
+    //   .then(users => { //setState })
     const users = require('./mock-users.json')
     this.setState({
       users
+    })
+    //bind methods
+    this.openModal = this.openModal.bind(this)
+  }
+
+  openModal(userId){
+    console.log(`Modal is opened from user ${userId}`);
+    this.setState({
+      modalIsShown: true,
+      modalUserId: userId
     })
   }
 
@@ -38,7 +50,10 @@ export default class Invitation extends Component {
 
         <h4>Opened requests</h4>
         <p>Please confirm</p>
-        <OpenUserList users={openUsers}/>
+        <OpenUserList
+          users={openUsers}
+          openModal={this.openModal}
+        />
       </div>
     )
   }

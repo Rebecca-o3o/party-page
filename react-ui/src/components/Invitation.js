@@ -19,16 +19,15 @@ export default class Invitation extends Component {
   }
 
   componentDidMount(){
-    // const users = require('./mock-users.json')
-    // this.setState({
-    //   users: users
-    // })
     axios.get('/api/users')
       .then(serverResponse => {
         this.setState({
           users: serverResponse.data.users
         })
       })
+      .catch(e =>
+        this.setState({errorMessage: 'Error getting users from database'})
+      )
   }
 
   openModal(userId){
@@ -39,13 +38,14 @@ export default class Invitation extends Component {
   }
 
   closeModalAndUpdateUser(updatedUser){
-    // const {userId, confirmationCode, dinner, party, notGoing} = updatedUser
+    // const {userId, confirmationCode, dinner, party, declined} = updatedUser
     axios.post('/api/confirmation',{...updatedUser})
       .then(serverResponse => {
-        if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
+        if(serverResponse.status !== 200) throw new Error('Updating failed')
 
         //remove Modal, update 'this.state.users' list with new user
         this.setState({
+          errorMessage: '',
           modalIsShown: false,
           modalUserId: '',
           users: this.state.users.map(u => {
@@ -61,20 +61,27 @@ export default class Invitation extends Component {
           })
         })
       })
+      .catch(e =>
+        this.setState({errorMessage: 'Wrong Confirmation Code. Please try again!'})
+      )
   }
 
   render(){
-    const {users, modalIsShown, modalUserId} = this.state
+    const {errorMessage, users, modalIsShown, modalUserId} = this.state
     const dinnerUsers = users.length && users.filter(user=>user.dinner)
     const partyUsers = users.length && users.filter(user=>user.party)
     const openUsers = users.length && users.filter(user=>(!(user.dinner || user.party) && !user.declined))
+
     return (
       <div>
+
+        {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
 
         {
           modalIsShown &&
           <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
+
 
         <h4>Dinner</h4>
         <p>The dinner bla bla bla</p>
@@ -83,12 +90,14 @@ export default class Invitation extends Component {
           <SignedUserList users={dinnerUsers}/>
         }
 
+
         <h4>Party</h4>
         <p>Party will be...</p>
         {
           partyUsers &&
           <SignedUserList users={partyUsers}/>
         }
+
 
         <h4>Opened requests</h4>
         <p>Please confirm</p>

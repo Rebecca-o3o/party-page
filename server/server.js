@@ -1,6 +1,6 @@
 const express = require('express'),
-  path = require('path'),
-  app = express()
+      path    = require('path'),
+      app     = express()
 
 const db = require('../database/dbqueries')
 
@@ -24,10 +24,10 @@ app.get('/api/users', (req, res) => {
     })
   })
     .catch(function(err){
+      res
+        .status(500)
+        .json({success: false})
       console.log(err)
-      res.json({
-        success: false
-      })
     })
 })
 
@@ -44,10 +44,10 @@ app.post('/api/confirmation', function(req,res){
       })
     })
     .catch(function(err){
-      console.log(err)
-      res.json({
-        success: false
-      })
+      res
+        .status(500)
+        .json({success: false})
+      console.log(err.message)
     })
 })
 

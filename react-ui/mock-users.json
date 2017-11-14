@@ -1,0 +1,42 @@
+[
+  {
+    "id": 584264,
+    "name": "Mark",
+    "imageUrl": "http://via.placeholder.com/500x500",
+    "dinner": "",
+    "party": "",
+    "declined": ""
+  },
+  {
+    "id": 5844,
+    "name": "Tom",
+    "imageUrl": "http://via.placeholder.com/500x500",
+    "dinner": "",
+    "party": "",
+    "declined": ""
+  },
+  {
+    "id": 21478,
+    "name": "Steve",
+    "imageUrl": "http://via.placeholder.com/500x500",
+    "dinner": "",
+    "party": "",
+    "declined": ""
+  },
+  {
+    "id": 6985,
+    "name": "Matt",
+    "imageUrl": "http://via.placeholder.com/500x500",
+    "dinner": "",
+    "party": "",
+    "declined": ""
+  },
+  {
+    "id": 474,
+    "name": "Thomas",
+    "imageUrl": "http://via.placeholder.com/500x500",
+    "dinner": "",
+    "party": "",
+    "declined": ""
+  }
+]

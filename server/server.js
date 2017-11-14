@@ -34,8 +34,7 @@ app.get('/api/users', (req, res) => {
 
 app.post('/api/confirmation', function(req,res){
 
-//TODO: check iff all true
-
+  //TODO: check if all true
   const {userId, confirmationCode, dinner, party, declined} = req.body
 
   db.updateUserStatus(userId, confirmationCode, dinner, party, declined)

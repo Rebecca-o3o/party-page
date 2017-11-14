@@ -40,46 +40,27 @@ export default class Invitation extends Component {
 
   closeModalAndUpdateUser(updatedUser){
     // const {userId, confirmationCode, dinner, party, notGoing} = updatedUser
+    axios.post('/api/confirmation',{...updatedUser})
+      .then(serverResponse => {
+        if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
 
-    //remove Modal, update 'this.state.users' list with new user
-    this.setState({
-      modalIsShown: false,
-      modalUserId: '',
-      users: this.state.users.map(u => {
-        if(u.userId === updatedUser.userId){
-          return {
-            ...u,
-            dinner: updatedUser.dinner,
-            party: updatedUser.party,
-            declined: updatedUser.declined
-          }
-        }
-        return u
+        //remove Modal, update 'this.state.users' list with new user
+        this.setState({
+          modalIsShown: false,
+          modalUserId: '',
+          users: this.state.users.map(u => {
+            if(u.userId === updatedUser.userId){
+              return {
+                ...u,
+                dinner: updatedUser.dinner,
+                party: updatedUser.party,
+                declined: updatedUser.declined
+              }
+            }
+            return u
+          })
+        })
       })
-    })
-
-
-    // axios.post('/api/confirmation',{updatedUser})
-    //   .then(serverResponse => {
-    //     if(!serverResponse.status === 200) return this.setState({errorMessage: 'Failed updating user'})
-    //
-    //     //remove Modal, update 'this.state.users' list with new user
-    //     this.setState({
-    //       modalIsShown: false,
-    //       modalUserId: '',
-    //       users: this.state.users.map(u => {
-    //         if(u.userId === updatedUser.userId){
-    //           return {
-    //             ...u,
-    //             dinner: updatedUser.dinner,
-    //             party: updatedUser.party,
-    //             declined: updatedUser.declined
-    //           }
-    //         }
-    //         return u
-    //       })
-    //     })
-    //   })
   }
 
   render(){

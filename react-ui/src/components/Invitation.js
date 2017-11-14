@@ -18,16 +18,15 @@ export default class Invitation extends Component {
     this.closeModalAndUpdateUser = this.closeModalAndUpdateUser.bind(this)
   }
 
-  componentDidMount(){
-    axios.get('/api/users')
-      .then(serverResponse => {
-        this.setState({
-          users: serverResponse.data.users
-        })
+  async componentDidMount(){
+    try {
+      const {data} = await axios.get('/api/users')
+      this.setState({
+        users: data.users
       })
-      .catch(e =>
-        this.setState({errorMessage: 'Error getting users from database'})
-      )
+    } catch(e){
+      this.setState({errorMessage: 'Error getting users from database'})
+    }
   }
 
   openModal(userId){
@@ -37,33 +36,35 @@ export default class Invitation extends Component {
     })
   }
 
-  closeModalAndUpdateUser(updatedUser){
-    // const {userId, confirmationCode, dinner, party, declined} = updatedUser
-    axios.post('/api/confirmation',{...updatedUser})
-      .then(serverResponse => {
-        if(serverResponse.status !== 200) throw new Error('Updating failed')
+  async closeModalAndUpdateUser(updatedUser){
+    try {
+      //const {userId, confirmationCode, dinner, party, declined} = updatedUser
 
-        //remove Modal, update 'this.state.users' list with new user
-        this.setState({
-          errorMessage: '',
-          modalIsShown: false,
-          modalUserId: '',
-          users: this.state.users.map(u => {
-            if(u.userId === updatedUser.userId){
-              return {
-                ...u,
-                dinner: updatedUser.dinner,
-                party: updatedUser.party,
-                declined: updatedUser.declined
-              }
+      //send updated user data to server
+      const serverResponse = await axios.post('/api/confirmation', {...updatedUser})
+
+      if(serverResponse.status !== 200) throw new Error('Updating failed')
+
+      //remove Modal and update 'this.state.users' with new user
+      this.setState({
+        errorMessage: '',
+        modalIsShown: false,
+        modalUserId: '',
+        users: this.state.users.map(u => {
+          if(u.userId === updatedUser.userId){
+            return {
+              ...u,
+              dinner: updatedUser.dinner,
+              party: updatedUser.party,
+              declined: updatedUser.declined
             }
-            return u
-          })
+          }
+          return u
         })
       })
-      .catch(e =>
-        this.setState({errorMessage: 'Wrong Confirmation Code. Please try again!'})
-      )
+    } catch(e){
+      this.setState({errorMessage: 'Wrong Confirmation Code. Please try again!'})
+    }
   }
 
   render(){

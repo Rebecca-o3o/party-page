@@ -3,7 +3,7 @@ const db = spicedPg(process.env.DATABASE_URL || require('../secrets').db)
 
 
 module.exports.getAllUsers = function(){
-  const queryText = 'SELECT id, name, image, dinner, party, declined FROM users order by name'
+  const queryText = 'SELECT id AS userId, name, image, dinner, party, declined FROM users order by name'
   return db.query(queryText).then((result)=>{
     return result
   }).catch((err)=>{
@@ -12,17 +12,27 @@ module.exports.getAllUsers = function(){
 }
 
 
-module.exports.updateUserStatus = function(userId, dinner, party, declinded){
-  const queryText = `UPDATE users SET dinner=$2, party=$3, declined=$4 where id = $1`
+module.exports.updateUserStatus = function(userId, confirmationCode, dinner, party, declinded){
 
-  return db.query(queryText, [userId, dinner, party, declinded]).then(()=>{
-    return {
-      success: true
+  const queryTextCode = `SELECT confirmation_code FROM users where id = $1`
+
+  return db.query(queryTextCode, [userId]).then((dbCodeResult)=>{
+
+    if (dbCodeResult.rows[0].confirmation_code !== confirmationCode) {
+      throw {message: 'wrong confirmationCode'}
     }
-  }).catch((err)=>{
-    console.log(err)
-    return {
-      success: false
-    }
+
+    const queryText = `UPDATE users SET dinner=$2, party=$3, declined=$4 where id = $1`
+
+    return db.query(queryText, [userId, dinner, party, declinded]).then(()=>{
+      return {
+        success: true
+      }
+    }).catch((err)=>{
+      console.log(err)
+      return {
+        success: false
+      }
+    })
   })
 }

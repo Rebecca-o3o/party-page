@@ -4,6 +4,8 @@ const express = require('express'),
 
 const db = require('../database/dbqueries')
 
+app.use(require('body-parser').json())
+
 //SERVE STATIC FILES
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
 
@@ -32,20 +34,22 @@ app.get('/api/users', (req, res) => {
 
 app.post('/api/confirmation', function(req,res){
 
-  const userId = req.body.userId
-  const dinner = req.body.dinner
-  const party = req.body.party
-  const declined = req.body.declined
+//TODO: check iff all true
 
+  const {userId, confirmationCode, dinner, party, declined} = req.body
 
-  db.updateUserStatus(userId, dinner, party, declined).then(function(result){
-
-    res.json({
-      success: true
+  db.updateUserStatus(userId, confirmationCode, dinner, party, declined)
+    .then(function(){
+      res.json({
+        success: true
+      })
     })
-  }).catch(function(err){
-    console.log(err)
-  })
+    .catch(function(err){
+      console.log(err)
+      res.json({
+        success: false
+      })
+    })
 })
 
 //All remaining requests return the React app, so it can handle routing.

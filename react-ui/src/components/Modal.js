@@ -23,7 +23,7 @@ export default class Modal extends Component {
     })
   }
 
-  handleCheckField(key,value){
+  handleCheckField(key){
     this.setState({
       [key]: !this.state[key]
     })
@@ -60,19 +60,19 @@ export default class Modal extends Component {
           <input type="text" value={this.state.confirmationCode} onChange={e => this.handleInputField('confirmationCode', e.target.value)}/>
         </div>
 
-        <div onClick={e => this.handleCheckField('dinner', true)}>
+        <div onClick={e => this.handleCheckField('dinner')}>
           <h5>Dinner</h5>
-          <div className="checkbox"/>
+          <div className={this.state.dinner ? 'checkbox checked': 'checkbox'}/>
         </div>
 
-        <div onClick={e => this.handleCheckField('party', true)}>
+        <div onClick={e => this.handleCheckField('party')}>
           <h5>Party</h5>
-          <div className="checkbox"/>
+          <div className={this.state.party ? 'checkbox checked': 'checkbox'}/>
         </div>
 
-        <div onClick={e => this.handleCheckField('declined', true)}>
+        <div onClick={e => this.handleCheckField('declined')}>
           <h5>Not Going</h5>
-          <div className="checkbox"/>
+          <div className={this.state.declined ? 'checkbox checked': 'checkbox'}/>
         </div>
 
         <button onClick={this.handleSendButton}>Send</button>

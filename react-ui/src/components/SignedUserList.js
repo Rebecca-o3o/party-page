@@ -5,12 +5,11 @@ export default class SignedUserList extends Component {
   render(){
     const {users} = this.props
     return (
-      <ul>
+      <ul className="signed-user-list">
         {users.map(user => (
-          <div key={user.userId}>
-            <h3>{user.name}</h3>
-            <img src={user.image} alt={user.name}/>
-          </div>
+          <li key={user.userId}>
+            <h6>{user.name}</h6>
+          </li>
         ))}
       </ul>
     )

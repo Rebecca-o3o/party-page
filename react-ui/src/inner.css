@@ -3,22 +3,44 @@
 
 .schedule {
   font-family: 'Amatic SC', cursive;
-  border: 12px dashed white;
-  margin: 1em auto;
+  border: 2px solid white;
+  margin: 1.5em auto;
   width: 90%;
+  position: relative;
 }
 
-.schedule--green {
-  background-color: rgba(0,255,0,.3);
+.schedule--dinner {
+  background-image: url("https://prods3.imgix.net/images/articles/2016_02/Hero-Dinner-Party.jpg");
+  color: white;
 }
 
-.schedule--red {
-  background-color: rgba(255,0,0,.3);
+.schedule--party {
+  background-image: url("https://i.ytimg.com/vi/5Xh9sDqeVkU/maxresdefault.jpg");
+  color: white;
 }
 
-.schedule--blue {
-  background-color: rgba(0,0,255,.3);
+.schedule--open {
+  background-image: url("http://jokesforlosers.weebly.com/uploads/5/3/8/8/53885375/4424762_orig.jpg");
+  color: white;
 }
+
+  .schedule__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .schedule__overlay--dinner {
+    background-color: rgba(0,0,0,.3);
+  }
+
+  .schedule__overlay--party {
+    background-color: rgba(0,0,0,.3);
+  }
+
+  .schedule__overlay--open {
+    background-color: rgba(0,0,0,.3);
+  }
 
   .schedule__pre {
     text-align: center;
@@ -33,9 +55,10 @@
   }
 
   .schedule__quest {
-    display: inline;
+    display: inline-block;
     font-size: 1.2em;
     padding-left: .5em;
+    margin-bottom: .8em;
   }
 
   .schedule__ans {
@@ -51,14 +74,14 @@
   display: flex;
   padding-left: 3em;
   flex-wrap: wrap;
-  margin-top: -1.5em;
+  margin-top: -1em;
   margin-bottom: 1em;
 }
 
   .signed-user-list li {
     flex: 1 50%;
     text-align: center;
-    padding: .5em 0;
+    padding: .8em 0;
   }
 
     .signed-user-list h6 {
@@ -76,10 +99,10 @@
 }
 
   .open-user-list li {
-    flex: 1 30%;
+    flex: 1 40%;
     text-align: center;
     margin: 1em;
-    border: 1px solid black;
+    border: 2px solid white;
     border-radius: 10px;
 
     display: flex;
@@ -93,9 +116,32 @@
     }
 
     .open-user-list button {
-      background-color: green;
+      background-color: transparent;
       border: none;
       border-top-right-radius: 9px;
       border-bottom-right-radius: 9px;
       padding: .3em;
     }
+
+      .open-user-list i {
+        color: white;
+      }
+
+
+@media (min-width: 768px){
+  .invitation {
+    font-size: 1.4em;
+  }
+
+  .schedule {
+    width: 75%;
+  }
+
+  .signed-user-list li {
+    flex: 1 33%;
+  }
+
+  .open-user-list li {
+    flex: 1 25%;
+  }
+}

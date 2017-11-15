@@ -85,7 +85,9 @@ export default class Invitation extends Component {
           <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
 
-        <div className="schedule schedule--red">
+        <div className="schedule schedule--dinner">
+          <div className="schedule__overlay schedule__overlay--dinner"></div>
+
           <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
           <h3 className="schedule__title">DINNER!</h3>
 
@@ -105,7 +107,9 @@ export default class Invitation extends Component {
         </div>
 
 
-        <div className="schedule schedule--green">
+        <div className="schedule schedule--party">
+          <div className="schedule__overlay schedule__overlay--party"></div>
+
           <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
           <h3 className="schedule__title">PARTY!</h3>
 
@@ -125,7 +129,9 @@ export default class Invitation extends Component {
         </div>
 
 
-        <div className="schedule schedule--blue">
+        <div className="schedule schedule--open">
+          <div className="schedule__overlay schedule__overlay--open"></div>
+
           <h4 className="schedule__pre">PEOPLE THAT STILL NEED TO..</h4>
           <h3 className="schedule__title">CONFIRM!!!</h3>
 

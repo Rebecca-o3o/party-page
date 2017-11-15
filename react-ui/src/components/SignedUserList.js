@@ -8,7 +8,7 @@ export default class SignedUserList extends Component {
       <ul className="signed-user-list">
         {users.map(user => (
           <li key={user.userId}>
-            <h6>{user.name}</h6>
+            <h6>| {user.name} |</h6>
           </li>
         ))}
       </ul>

@@ -12,7 +12,7 @@ export default class SignedUserList extends Component {
             <h6>{user.name}</h6>
 
             <button onClick={e => openModal(user.userId)}>
-              <i className="fa fa-handshake-o fa-2x" aria-hidden="true"></i>            </button>
+              <i className="fa fa-hand-spock-o fa-2x" aria-hidden="true"></i>            </button>
 
           </li>
         ))}

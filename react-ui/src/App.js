@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Invitation from './components/Invitation'
+import faces from './images/faces.png'
 
 
 class App extends Component {
@@ -8,14 +9,20 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1>Welcome to the birthday party of Rebecca and Loris!</h1>
-        <h3>8th December 2017</h3>
+        <div className="welcome">
+
+          <div className="bg-img"></div>
+          <h1 className="page-title">You are invited to Rebeccas and Loris Birthday Party!</h1>
+          <h3 className="page-title">on Friday 8<sup>th</sup> December 2017</h3>
+          <img src={faces} id="faces" alt="Loris and Rebecca"/>
+
+        </div>
 
         <Invitation />
 
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

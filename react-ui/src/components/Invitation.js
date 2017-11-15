@@ -4,6 +4,8 @@ import Modal from './Modal'
 import SignedUserList from './SignedUserList'
 import OpenUserList from './OpenUserList'
 
+import '../inner.css'
+
 export default class Invitation extends Component {
 
   constructor(props){
@@ -74,7 +76,7 @@ export default class Invitation extends Component {
     const openUsers = users.length && users.filter(user=>(!(user.dinner || user.party) && !user.declined))
 
     return (
-      <div>
+      <div className="invitation">
 
         {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
 
@@ -83,13 +85,24 @@ export default class Invitation extends Component {
           <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
 
+        <div className="schedule">
+          <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
+          <h3 className="schedule__title">DINNER!</h3>
 
-        <h4>Dinner</h4>
-        <p>The dinner bla bla bla</p>
-        {
-          dinnerUsers &&
-          <SignedUserList users={dinnerUsers}/>
-        }
+          <h5 className="schedule__quest">WHEN:</h5>
+          <p className="schedule__ans">at 19.30</p>
+          <br/>
+
+          <h5 className="schedule__quest">WHERE:</h5>
+          <p className="schedule__ans">at Barbarican Restauran, 177 PostdamerPlatz</p>
+          <br/>
+
+          <h5 className="schedule__quest">WHO:</h5>
+          {
+            dinnerUsers &&
+            <SignedUserList users={dinnerUsers}/>
+          }
+        </div>
 
 
         <h4>Party</h4>

@@ -1,0 +1,51 @@
+/* === Color Scheme === */
+/*
+#393363
+#005685
+#009051
+#D30044
+#700069
+*/
+
+* {
+  color: #393363;
+}
+
+/* === Welcome section === */
+.welcome {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.bg-img {
+  background: url(./images/background.jpeg) no-repeat;;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow: hidden;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -100;
+  opacity: 0.6
+}
+
+.page-title {
+  color: #393363;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px white;
+  margin: 2rem 0;
+}
+
+#faces {
+  max-width: 80%;
+  max-height: 200px;
+  border: solid 5px white;
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+}

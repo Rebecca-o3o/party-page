@@ -5,18 +5,16 @@ export default class SignedUserList extends Component {
   render(){
     const {users, openModal} = this.props
     return (
-      <ul>
+      <ul className="open-user-list">
         {users.map(user => (
-          <div key={user.userId}>
+          <li key={user.userId}>
 
-            <h3>{user.name}</h3>
-            <img src={user.image} alt={user.name}/>
+            <h6>{user.name}</h6>
 
             <button onClick={e => openModal(user.userId)}>
-              Confirm
-            </button>
+              <i className="fa fa-handshake-o fa-2x" aria-hidden="true"></i>            </button>
 
-          </div>
+          </li>
         ))}
       </ul>
     )

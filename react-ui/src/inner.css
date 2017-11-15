@@ -3,20 +3,33 @@
 
 .schedule {
   font-family: 'Amatic SC', cursive;
-  background-color: rgba(255,0,0,.3);
   border: 12px dashed white;
-  margin: 0 auto;
+  margin: 1em auto;
   width: 90%;
+}
+
+.schedule--green {
+  background-color: rgba(0,255,0,.3);
+}
+
+.schedule--red {
+  background-color: rgba(255,0,0,.3);
+}
+
+.schedule--blue {
+  background-color: rgba(0,0,255,.3);
 }
 
   .schedule__pre {
     text-align: center;
     font-size: 1.6em;
+    margin-top: .6em;
   }
 
   .schedule__title {
     text-align: center;
     font-size: 2.4em;
+    margin-bottom: .5em;
   }
 
   .schedule__quest {
@@ -39,6 +52,7 @@
   padding-left: 3em;
   flex-wrap: wrap;
   margin-top: -1.5em;
+  margin-bottom: 1em;
 }
 
   .signed-user-list li {
@@ -47,4 +61,41 @@
     padding: .5em 0;
   }
 
-    .signed-user-list h6 {}
+    .signed-user-list h6 {
+      font-size: 1.15em;
+    }
+
+
+.open-user-list {
+  font-family: 'Amatic SC', cursive;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+}
+
+  .open-user-list li {
+    flex: 1 30%;
+    text-align: center;
+    margin: 1em;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+    .open-user-list h6 {
+      padding-left: 1em;
+      font-size: 1.15em;
+    }
+
+    .open-user-list button {
+      background-color: green;
+      border: none;
+      border-top-right-radius: 9px;
+      border-bottom-right-radius: 9px;
+      padding: .3em;
+    }

@@ -85,7 +85,7 @@ export default class Invitation extends Component {
           <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
 
-        <div className="schedule">
+        <div className="schedule schedule--red">
           <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
           <h3 className="schedule__title">DINNER!</h3>
 
@@ -105,23 +105,38 @@ export default class Invitation extends Component {
         </div>
 
 
-        <h4>Party</h4>
-        <p>Party will be...</p>
-        {
-          partyUsers &&
-          <SignedUserList users={partyUsers}/>
-        }
+        <div className="schedule schedule--green">
+          <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
+          <h3 className="schedule__title">PARTY!</h3>
+
+          <h5 className="schedule__quest">WHEN:</h5>
+          <p className="schedule__ans">at 21.30</p>
+          <br/>
+
+          <h5 className="schedule__quest">WHERE:</h5>
+          <p className="schedule__ans">AT MAMA'S, 177 PostdamerPlatz</p>
+          <br/>
+
+          <h5 className="schedule__quest">WHO:</h5>
+          {
+            partyUsers &&
+            <SignedUserList users={partyUsers}/>
+          }
+        </div>
 
 
-        <h4>Opened requests</h4>
-        <p>Please confirm</p>
-        {
-          openUsers &&
-          <OpenUserList
-            users={openUsers}
-            openModal={this.openModal}
-          />
-        }
+        <div className="schedule schedule--blue">
+          <h4 className="schedule__pre">PEOPLE THAT STILL NEED TO..</h4>
+          <h3 className="schedule__title">CONFIRM!!!</h3>
+
+          {
+            openUsers &&
+            <OpenUserList
+              users={openUsers}
+              openModal={this.openModal}
+            />
+          }
+        </div>
       </div>
     )
   }

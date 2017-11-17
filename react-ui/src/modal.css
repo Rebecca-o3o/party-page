@@ -37,3 +37,7 @@
 .checked {
   content: '\f00c';
 }
+
+.modal .error-message {
+  color: #D30044;
+}

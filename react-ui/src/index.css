@@ -2,16 +2,3 @@
   margin: 0;
   padding: 0;
 }
-
-
-
-/*=========
-  MODAL
-=========*/
-.modal {
-  background-color: rgba(0,255,0,.3)
-}
-
-  .modal .error-message {
-    color: red;
-  }

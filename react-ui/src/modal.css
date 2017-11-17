@@ -1,0 +1,43 @@
+/* === Color Scheme === */
+/*
+#393363
+#005685
+#009051
+#D30044
+#700069
+*/
+
+
+/* === Confirmation Modal === */
+.modal {
+  background-color: #009051;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.modal > div {
+  margin: 10px;
+}
+
+.modal > button {
+  margin: 5px;
+}
+
+.checkbox {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border: 1px #393363 solid;
+  border-radius: 100%
+}
+
+.checked {
+  content: '\f00c';
+}
+
+.modal .error-message {
+  color: #D30044;
+}

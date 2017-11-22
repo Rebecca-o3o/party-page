@@ -13,7 +13,10 @@ export default class Invitation extends Component {
     this.state = {
       users: [],
       modalIsShown: false,
-      modalUserId: ''
+      modalUser: {
+        userId: '',
+        name: ''
+      }
     }
     //bind methods
     this.openModal = this.openModal.bind(this)
@@ -32,17 +35,20 @@ export default class Invitation extends Component {
     }
   }
 
-  openModal(userId){
+  openModal(user){
     this.setState({
       modalIsShown: true,
-      modalUserId: userId
+      modalUser: user
     })
   }
 
   closeModal(){
     this.setState({
       modalIsShown: false,
-      modalUserId: ''
+      modalUser: {
+        userId: '',
+        name: ''
+      }
     })
   }
 
@@ -59,7 +65,10 @@ export default class Invitation extends Component {
       this.setState({
         errorMessage: '',
         modalIsShown: false,
-        modalUserId: '',
+        modalUser: {
+          userId: '',
+          name: ''
+        },
         users: this.state.users.map(u => {
           if(u.userId === updatedUser.userId){
             return {
@@ -78,7 +87,7 @@ export default class Invitation extends Component {
   }
 
   render(){
-    const {errorMessage, users, modalIsShown, modalUserId} = this.state
+    const {errorMessage, users, modalIsShown, modalUser} = this.state
     const dinnerUsers = users.length && users.filter(user=>user.dinner)
     const partyUsers = users.length && users.filter(user=>user.party)
     const openUsers = users.length && users.filter(user=>(!(user.dinner || user.party) && !user.declined))
@@ -91,8 +100,8 @@ export default class Invitation extends Component {
         {
           modalIsShown &&
           <Modal
-            userId={modalUserId}
-            closeModal={this.closeModal} 
+            user={modalUser}
+            closeModal={this.closeModal}
             closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
 

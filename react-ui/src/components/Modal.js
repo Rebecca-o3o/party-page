@@ -5,7 +5,8 @@ export default class Modal extends Component {
   constructor(props){
     super(props)
     this.state = {
-      userId: this.props.userId,
+      userId: this.props.user.userId,
+      name: this.props.user.name,
       confirmationCode: '',
       dinner: false,
       party: false,
@@ -57,6 +58,8 @@ export default class Modal extends Component {
         {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
 
         <h6 onClick={closeModal}>X</h6>
+
+        <h2>Hi {this.state.name}</h2>
 
         <div>
           <h5>Please insert your confirmation code here:</h5>

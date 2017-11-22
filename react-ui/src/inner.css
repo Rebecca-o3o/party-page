@@ -6,7 +6,7 @@
   border: 2px solid white;
   margin: 1.5em auto;
   width: 90%;
-  position: relative;
+  background-size: cover;
 }
 
 .schedule--dinner {
@@ -47,6 +47,8 @@
     display: inline;
     font-size: 1.1em;
     padding-left: .5em;
+    font-weight: bold;
+    text-decoration: underline;
   }
 
 
@@ -61,13 +63,14 @@
 }
 
   .signed-user-list li {
-    flex: 1 50%;
+    flex: 1 33%;
     text-align: center;
-    padding: .8em 0;
+    padding: .4em 0;
   }
 
     .signed-user-list h6 {
       font-size: 1.15em;
+      text-decoration: overline;
     }
 
 
@@ -81,11 +84,12 @@
 }
 
   .open-user-list li {
-    flex: 1 40%;
+    flex: 1 33%;
     text-align: center;
     margin: 1em;
     border: 2px solid white;
     border-radius: 10px;
+    cursor: pointer;
 
     display: flex;
     justify-content: space-between;
@@ -97,17 +101,10 @@
       font-size: 1.15em;
     }
 
-    .open-user-list button {
-      background-color: transparent;
-      border: none;
-      border-top-right-radius: 9px;
-      border-bottom-right-radius: 9px;
+    .open-user-list i {
       padding: .3em;
+      color: white;
     }
-
-      .open-user-list i {
-        color: white;
-      }
 
 
 @media (min-width: 768px){

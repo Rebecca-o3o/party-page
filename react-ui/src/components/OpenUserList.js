@@ -7,13 +7,14 @@ export default class SignedUserList extends Component {
     return (
       <ul className="open-user-list">
         {users.map(({userId,name}) => (
-          <li key={userId}>
+          <li
+            key={userId}
+            onClick={e => openModal({userId,name})}
+          >
 
             <h6>{name}</h6>
 
-            <button onClick={e => openModal({userId,name})}>
-              <i className="fa fa-hand-spock-o fa-2x" aria-hidden="true"></i>
-            </button>
+            <i className="fa fa-hand-spock-o" aria-hidden="true"></i>
 
           </li>
         ))}

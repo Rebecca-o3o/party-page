@@ -53,37 +53,39 @@ export default class Modal extends Component {
     const {errorMessage} = this.state
 
     return (
-      <div className="modal">
+      <div className="modal-overlay">
+          <div className="modal">
 
-        {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
+          {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
 
-        <h6 onClick={closeModal}>X</h6>
+          <h6 onClick={closeModal}>X</h6>
 
-        <h2>Hi {this.state.name}</h2>
+          <h2>Hi {this.state.name}</h2>
 
-        <div>
-          <h5>Please insert your confirmation code here:</h5>
+          <div>
+            <h5>Please insert your confirmation code here:</h5>
+          </div>
+          <div>
+            <input type="text" value={this.state.confirmationCode} onChange={e => this.handleInputField('confirmationCode', e.target.value)}/>
+          </div>
+
+          <div onClick={e => this.handleCheckField('dinner')}>
+            <div className={this.state.dinner ? 'checkbox checked': 'checkbox'}/>
+            <h5>Sure, I join for dinner</h5>
+          </div>
+
+          <div onClick={e => this.handleCheckField('party')}>
+            <div className={this.state.party ? 'checkbox checked': 'checkbox'}/>
+            <h5>Let's party!</h5>
+          </div>
+
+          <div onClick={e => this.handleCheckField('declined')}>
+            <div className={this.state.declined ? 'checkbox checked': 'checkbox'}/>
+            <h5>Too bad, I can't come</h5>
+          </div>
+
+          <button onClick={this.handleSendButton}>Send</button>
         </div>
-        <div>
-          <input type="text" value={this.state.confirmationCode} onChange={e => this.handleInputField('confirmationCode', e.target.value)}/>
-        </div>
-
-        <div onClick={e => this.handleCheckField('dinner')}>
-          <div className={this.state.dinner ? 'checkbox checked': 'checkbox'}/>
-          <h5>Sure, I join for dinner</h5>
-        </div>
-
-        <div onClick={e => this.handleCheckField('party')}>
-          <div className={this.state.party ? 'checkbox checked': 'checkbox'}/>
-          <h5>Let's party!</h5>
-        </div>
-
-        <div onClick={e => this.handleCheckField('declined')}>
-          <div className={this.state.declined ? 'checkbox checked': 'checkbox'}/>
-          <h5>Too bad, I can't come</h5>
-        </div>
-
-        <button onClick={this.handleSendButton}>Send</button>
       </div>
     )
   }

@@ -48,12 +48,15 @@ export default class Modal extends Component {
   }
 
   render(){
+    const {closeModal} = this.props
     const {errorMessage} = this.state
 
     return (
       <div className="modal">
 
         {errorMessage && <h6 className="error-message">{errorMessage}</h6>}
+
+        <h6 onClick={closeModal}>X</h6>
 
         <div>
           <h5>Please insert your confirmation code here:</h5>

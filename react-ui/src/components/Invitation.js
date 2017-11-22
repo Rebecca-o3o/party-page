@@ -17,6 +17,7 @@ export default class Invitation extends Component {
     }
     //bind methods
     this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
     this.closeModalAndUpdateUser = this.closeModalAndUpdateUser.bind(this)
   }
 
@@ -35,6 +36,13 @@ export default class Invitation extends Component {
     this.setState({
       modalIsShown: true,
       modalUserId: userId
+    })
+  }
+
+  closeModal(){
+    this.setState({
+      modalIsShown: false,
+      modalUserId: ''
     })
   }
 
@@ -82,7 +90,10 @@ export default class Invitation extends Component {
 
         {
           modalIsShown &&
-          <Modal userId={modalUserId} closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
+          <Modal
+            userId={modalUserId}
+            closeModal={this.closeModal} 
+            closeModalAndUpdateUser={this.closeModalAndUpdateUser}/>
         }
 
         <div className="schedule schedule--dinner">

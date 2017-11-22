@@ -114,10 +114,10 @@ export default class Invitation extends Component {
           <br/>
 
           <h5 className="schedule__quest">WHERE:</h5>
-          <p className="schedule__ans">at Barbarican Restauran, 177 PostdamerPlatz</p>
+          <p className="schedule__ans">Prometeo, Goebenstr. 3, 10783 Berlin <a href="http://www.prometeo.pizza/">Website</a> <a href="https://goo.gl/maps/AWkzWTKMQ732">Maps</a></p>
           <br/>
 
-          <h5 className="schedule__quest">WHO:</h5>
+          <h5 className="schedule__quest">confirmed:</h5>
           {
             dinnerUsers &&
             <SignedUserList users={dinnerUsers}/>
@@ -127,17 +127,17 @@ export default class Invitation extends Component {
 
         <div className="schedule schedule--party">
           <h4 className="schedule__pre">WHAT WE'LL DO FOR..</h4>
-          <h3 className="schedule__title">PARTY!</h3>
+          <h3 className="schedule__title">DRINKS!</h3>
 
           <h5 className="schedule__quest">WHEN:</h5>
           <p className="schedule__ans">at 21.30</p>
           <br/>
 
           <h5 className="schedule__quest">WHERE:</h5>
-          <p className="schedule__ans">AT MAMA'S, 177 PostdamerPlatz</p>
+          <p className="schedule__ans">Alter Roter Löwe Rein, Richardstr. 31, 12043 Berlin <a href="https://www.facebook.com/Loewerein">Website</a> <a href="https://goo.gl/maps/Td1nCN3z4Hy">Maps</a></p>
           <br/>
 
-          <h5 className="schedule__quest">WHO:</h5>
+          <h5 className="schedule__quest">confirmed:</h5>
           {
             partyUsers &&
             <SignedUserList users={partyUsers}/>

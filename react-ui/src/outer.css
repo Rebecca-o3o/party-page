@@ -7,16 +7,19 @@
 #700069
 */
 
-.welcome {
-  color: #393363;
-}
-
 /* === Welcome section === */
 .welcome {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin: 2rem;
+  font-family: 'Amatic SC';
+  font-weight: 400;
+  font-size: 1.6em;
+}
+
+.welcome > h3 {
+  margin-top: 0px;
 }
 
 .bg-img {
@@ -35,10 +38,8 @@
 
 .page-title {
   color: #393363;
-  font-weight: bold;
   text-align: center;
-  text-shadow: 2px 2px 4px white;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 #faces {

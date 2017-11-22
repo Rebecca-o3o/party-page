@@ -10,37 +10,19 @@
 }
 
 .schedule--dinner {
-  background-image: url("https://prods3.imgix.net/images/articles/2016_02/Hero-Dinner-Party.jpg");
+  background-image: url("/dinner.jpg");
   color: white;
 }
 
 .schedule--party {
-  background-image: url("https://i.ytimg.com/vi/5Xh9sDqeVkU/maxresdefault.jpg");
+  background-image: url("/party.jpg");
   color: white;
 }
 
 .schedule--open {
-  background-image: url("http://jokesforlosers.weebly.com/uploads/5/3/8/8/53885375/4424762_orig.jpg");
+  background-image: url("/open.jpg");
   color: white;
 }
-
-  .schedule__overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-  }
-
-  .schedule__overlay--dinner {
-    background-color: rgba(0,0,0,.3);
-  }
-
-  .schedule__overlay--party {
-    background-color: rgba(0,0,0,.3);
-  }
-
-  .schedule__overlay--open {
-    background-color: rgba(0,0,0,.3);
-  }
 
   .schedule__pre {
     text-align: center;

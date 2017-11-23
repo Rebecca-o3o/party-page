@@ -63,22 +63,26 @@
   background-color: white;
 }
 
-div.checkbox {
+.checkbox-container{
+  width: 80%;
+}
+
+.checkbox {
   cursor: pointer;
-  width: 15px;
-  height: 15px;
+  margin: 10px 0px;
   border: 2px white solid;
-  border-radius: 100%
+  border-radius: 10px;
+  text-align: center;
 }
 
 .checked {
-  font-family: 'Amatic SC', cursive;
-  content: '\f00c';
+  background-color: #009051
 }
 
 .modal .error-message {
   color: #D30044;
-
+  font-family: monospace;
+  font-weight: bold;
 }
 
 .close-modal {
